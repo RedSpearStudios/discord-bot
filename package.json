@@ -1,0 +1,36 @@
+{
+  "name": "discord-bots",
+  "version": "1.0.0",
+  "description": "Where the discord bots live",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedSpearStudios/discord.git"
+  },
+  "keywords": ["discord", "steam", "player", "count", "playercount", "discordbot", "onlineplayers", "steamplayercount", "steamplayercountbot"],
+  "author": "Reece Daniels <rubengmurray@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RedSpearStudios/discord/issues"
+  },
+  "homepage": "https://github.com/RedSpearStudios/discord#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "env-var": "^7.3.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.2"
+  },
+  "type": "module",
+  "engines": {
+    "node": "18.13.0"
+  }
+}
