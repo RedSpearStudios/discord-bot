@@ -1,6 +1,8 @@
-# discord
+# Red Spear Discord Bot
 
-Where the discord bot lives.
+An open-source bot for players online and fill-a-server channel updates
+
+![Bot Screenshot](https://taskforceelite.com/images/rss/tfebot_discord.png)
 
 ## Overview
 
@@ -31,7 +33,7 @@ N.B. https://discordjs.guide/preparations/setting-up-a-bot-application.html#crea
 ### Adding bot to server
 
 - You will need to be an admin of the server you are adding the bot to (or at least have the correct permissions to add a bot to a server).
-- Select your application in the discord dev portal, click OAuth2, then url generator, add the `bot` scope > with `Manager Server`, `Manage Channels` & `Send Messages` bot permissions.
+- Select your application in the discord dev portal, click OAuth2, then url generator, add the `bot` scope > with `Manage Server`, `Manage Channels` & `Send Messages` bot permissions.
 - That should generate a url that looks something like this: `https://discord.com/api/oauth2/authorize?client_id=BOT_ID&permissions=2096&scope=bot`.
   - N.B. The permissions are bitwise: `2096` reflects the permissions required for the actions of this bot.
 - Follow the prompts and your bot should be added to your server
@@ -43,26 +45,31 @@ N.B. https://discordjs.guide/preparations/setting-up-a-bot-application.html#crea
   - N.B. Login to the discord the web app on a browser to see server URLs.
   - Set the `EVERYONE_ROLE_ID` & `GUILD_ID` in your environment variables (these are the same value)
 
+### Prerequisites
+
+- You will need to have NodeJS & NPM installed on your machine to run this bot.
+- See the 'engines' section of `package.json` for the tested version.
+
 ### Creating the channels
 
 - There are two files in the repository you can run with `tsx` to create online player count and fill-a-server channels for your server.
 
 - Run `npm install`
 
-- Run `tsx ./channels/player-count/helper.ts`
+- Run `npx tsx ./channels/player-count/helper.ts`
   - The output in the CLI will tell you the channelId.
   - Take this id update the `PLAYER_COUNT_CHANNEL_ID` environment variable.
 
-- Run `tsc ./channels/fill-a-server/helper.ts`
+- Run `npx tsc ./channels/fill-a-server/helper.ts`
   - The output in the CLI will tell you the channelId.
   - Take this id update the `FILL_A_SERVER_CHANNEL_ID` environment variable.
 
 - You should see in your server that both channels have been created.
 
 #### Other required environment variables
-- After this, you should also set the `STEAM_GAME_ID` for your game to get the online player count from the Steam API
+- After this, you should also set the `STEAM_GAME_ID`. for your game to get the online player count from the Steam API. 
+  - The gameId in the .example.env is for (Task Force Elite)[https://store.steampowered.com/app/1148810/Task_Force_Elite/]. 
 - You should also set the `MINIMUM_PLAYER_COUNT_TO_NOTIFY` to the minimum player count you want to be notified about in the `#fill-a-server` channel.
-
 
 You should now be ready to run the bot.
 
@@ -74,6 +81,6 @@ On start-up the bot will check for updates required to player count + fill-a-ser
 
 ## Rate limiting
 
-The discord API is rate limited, and the documentation is pretty sketchy on what the limits are. 
+The discord API is rate limited, and the documentation is pretty vague on exactly what the limits are. 
 
-We have found that 6 minute intervals are a near maximum for the kind of updates we are performing.
+We have found that 6 minute intervals are a near maximum for the kind of updates performed by this bot.
